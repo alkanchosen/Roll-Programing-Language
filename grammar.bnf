@@ -1,2 +1,25 @@
 <program> ::= begin <stmt_list> end
-<stmt_list> ::= <stmt> | <stmt> ; <stmt_list>
+<stmt_list> ::= <empty> | <stmt> | <stmt> <stmt_list> | <code_block> <stmt_list>
+<expression> ::= <arithmetic_expression> | <relational_expression> | <boolean_expression> | <identifier> | ...
+// other expression types ??????????
+// are constants and identifiers (variables) expression ???????????
+
+<assignment_stmt> ::= <identifier> <assign_op> <expression> ;
+        | <identifier> <assign_op> <identifier> ;
+        | <identifier> <assign_op> <constant> ;
+//other stmts too
+
+<constant> ::= | <int> | <char> | <string> | <boolean> | <double> | <list>
+<int> ::= <digit> | <digit> <int>
+<char> ::=
+//define <identifier>
+
+<code_block> ::= <empty> | { <stmt_list> }
+<for_loop> ::= for ( <assignment_stmt> ; <relational_expression> ; <arithmetic_expression> ) <code_block>
+<while_loop> ::= while ( <expression> ) <code_block>
+<function_declaration> ::= <function_keyword> <function_name> ( <function_params> ) <code_block>
+
+<assign_op> ::= =
+<function_keyword> ::= func
+<empty> ::=
+<letter> ::= a | b | c | d | e | ...
