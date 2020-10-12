@@ -28,7 +28,7 @@ Project 1:
 
     •	comments
 
-    •	primitive functions for
+    •	primitive functions for:
 
       o	reading the inclination of the drone
 
