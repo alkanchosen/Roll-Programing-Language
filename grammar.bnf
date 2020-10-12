@@ -1,2 +1,21 @@
 <program> ::= begin <stmt_list> end
 <stmt_list> ::= <stmt> | <stmt> ; <stmt_list>
+<stmt> ::= <matched> | <unmatched>
+
+/* Precedence, associativity of the operators */
+<id> ::= A | B | C | D | E
+<expr> ::= <expr> + <term> | <expr> - <term> | <term>
+<term> ::= <term> * <factor> | <term> / <factor> | <factor>
+<factor> ::= <expr> ** <factor> | <expr>
+<expr> ::= '(' <expr> ')' | <id>
+
+/* Conditional statements */
+<matched> ::= if '(' <logic_expr> ')' then <matched> else <matched> | // non-if statement
+<unmatched> ::= if '(' <logic_expr> ')' then <stmt> | if '(' <logic_expr> ')' then <matched> else <unmatched>
+
+
+/* Comments */
+<string> ::= <string_chars>
+<string_chars> ::= <string_chars> <string_char> | <string_char>
+<string_char> ::= <char> // char yazılacak
+<comment> ::= <slash_op> <slash_op> <string>
