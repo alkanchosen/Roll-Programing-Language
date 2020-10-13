@@ -11,8 +11,12 @@
 
 <constant> ::= | <int> | <char> | <string> | <boolean> | <double> | <list>
 <int> ::= <digit> | <digit> <int>
-<char> ::=
-//define <identifier>
+<char> ::= ' <letter> ' | ' <digit> ' | ' <under_score> ' | ' <newline> ' | ' <tab> '
+           " <letter> " | " <digit> " | " <under_score> " | " <newline> " | " <tab> "
+// newline ?????? tab ?????? space ??????? dot ???????
+<string> ::= <char> | <char> <string>
+<boolean> ::= <true> | <false>
+// define <identifier>
 
 <code_block> ::= <empty> | { <stmt_list> }
 <for_loop> ::= for ( <assignment_stmt> ; <relational_expression> ; <arithmetic_expression> ) <code_block>
@@ -23,3 +27,8 @@
 <function_keyword> ::= func
 <empty> ::=
 <letter> ::= a | b | c | d | e | ...
+<under_score> ::= _
+<tab> ::= \t
+<space> ::= \s
+<newline> ::= \n
+<true> ::= True |
