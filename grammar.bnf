@@ -1,31 +1,71 @@
 <program> ::= begin <stmt_list> end
 <stmt_list> ::= <empty> | <stmt> | <stmt> <stmt_list> | <code_block> <stmt_list>
-<expression> ::= <arithmetic_expression> | <relational_expression> | <boolean_expression> | <identifier> | <type>
-//identifier and type ?????
+<stmt_block> ::= { <stmt_list> }
+<stmt> ::= <assignment_stmt> | <conditional_stmt> | <return_stmt>
+    | <function_declaration> | ...
+<code_block> ::= <empty> | { <stmt_list> }
 
+/* 1-) Identifier */
+<identifier> ::= // ToDo
+
+/* 2-) Assignment Statement */
 <assignment_stmt> ::= <identifier_list> <assign_op> <expression> ;
         | <identifier_list> <assign_op> <mixed_list> ;
 //if identifier and type are included in expression then take only the first line.
 //this works with a, b, c = 4, 8, k;
 
-<return_stmt> ::= <return_keyword> <mixed_list> ;
+/* 3-) and 4-) Expressions */
+<expr> ::= <arithmetic_expr> | <relational_expr> | <boolean_expr> // their combination? logic_expr? ToDo
 
-<code_block> ::= <empty> | { <stmt_list> }
+    //  3-) Arithmetic expression definition includes precedence, associativity of the operators
+    <arithmetic_expr> ::= <arithmetic_expr> + <term> | <arithmetic_expr> - <term> | <term>
+    <term> ::= <term> * <factor> | <term> / <factor> | <factor>
+    <factor> ::= <expr> ** <factor> | <arithmetic_expr>
+    <arithmetic_expr> ::= ( <arithmetic_expr> ) | <identifier>
+
+    // 4-) Expressions
+    // Relational expression definition
+    <relational_expr> ::= //ToDo
+
+    // Boolean expression definition
+    <boolean_expr> ::= //ToDo
+
+/* 5-) Loops */
 <for_loop> ::= for ( <assignment_stmt> ; <relational_expression> ; <arithmetic_expression> ) <code_block>
 <while_loop> ::= while ( <expression> ) <code_block>
+
+/* 6-) Conditional statements */
+<conditional_stmt> ::= <matched> | <unmatched>
+<matched> ::= if ( <logic_expr> ) then <matched> else <matched>
+            | <stmt_block>
+<unmatched> ::= if ( <logic_expr> ) then <stmt_block>
+            | if ( <logic_expr> ) then <matched> else <unmatched>
+
+/* 7-) Statements for input/output */
+// ToDo
+
+/* 8-) Function definition and function calls */
 <function_declaration> ::= <function_keyword> <function_name> ( <function_params> ) <code_block>
 <function_name> ::= <identifier>
 <function_params> ::= <identifier_list>
+<return_stmt> ::= <return_keyword> <mixed_list> ;
+<function_call> ::= <function_name> ( <function_params> )
 
+/* 9-) Comments */
+<comment> ::= <slash> <slash> <string>
+// /* ... */ ToDo
+
+/* 10 -) Data Types */
 <type> ::= | <int> | <char> | <string> | <boolean> | <double> | <list>
 <absolute_value> ::= <digit> | <digit> <int>
 <int> ::= <sign> <absolute_value>
+
 <char> ::= ' <letter> ' | ' <digit> ' | ' <under_score> ' | ' <newline> ' | ' <tab> '
            " <letter> " | " <digit> " | " <under_score> " | " <newline> " | " <tab> "
 // newline, tab, space, dot... if included in char then don't use char for identifier
 //otherwise add them in string
-
-<string> ::= <char> | <char> <string>
+<char_list> ::= <char_list> <char> | <char>
+<string> ::= <char_list>
 <boolean> ::= <true> | <false>
 <double> ::= <int> . <absolute_value> | . <absolute_value>
 <constant_list> ::= <empty> | <type> | <type> , <type_list>
@@ -35,16 +75,25 @@
 <mixed_list> ::= <type_list> | <identifier_list> | <mixed_list> <mixed_list>
 //a list consisting of constants and variables: 5, fd, "mpm"
 
+/* Miscellaneous */
 <assign_op> ::= =
 <function_keyword> ::= func
 <empty> ::=
-<letter> ::= a | b | c | d | e | ...
+<letter> ::= a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|
+             A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z
+<digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+<symbol> ::= $ | ! | # | &
+<char_identifier> ::= '
 <under_score> ::= _
 <tab> ::= \t
 <space> ::= \s
 <newline> ::= \n
 <dot> ::= \.
 <question_mark> ::= \?
+<semicolumn> ::= ;
+<left_paranthesis> ::= (
+<right_paranthesis> ::= )
+<slash> ::= /
 <true> ::= True | 1
 <false> ::= False | 0
 <plus_sign> ::= +
