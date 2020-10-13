@@ -1,27 +1,39 @@
 <program> ::= begin <stmt_list> end
 <stmt_list> ::= <empty> | <stmt> | <stmt> <stmt_list> | <code_block> <stmt_list>
-<expression> ::= <arithmetic_expression> | <relational_expression> | <boolean_expression> | <identifier> | ...
-// other expression types ??????????
-// are constants and identifiers (variables) expression ???????????
+<expression> ::= <arithmetic_expression> | <relational_expression> | <boolean_expression> | <identifier> | <type>
+//identifier and type ?????
 
-<assignment_stmt> ::= <identifier> <assign_op> <expression> ;
-        | <identifier> <assign_op> <identifier> ;
-        | <identifier> <assign_op> <constant> ;
-//other stmts too
+<assignment_stmt> ::= <identifier_list> <assign_op> <expression> ;
+        | <identifier_list> <assign_op> <mixed_list> ;
+//if identifier and type are included in expression then take only the first line.
+//this works with a, b, c = 4, 8, k;
 
-<constant> ::= | <int> | <char> | <string> | <boolean> | <double> | <list>
-<int> ::= <digit> | <digit> <int>
-<char> ::= ' <letter> ' | ' <digit> ' | ' <under_score> ' | ' <newline> ' | ' <tab> '
-           " <letter> " | " <digit> " | " <under_score> " | " <newline> " | " <tab> "
-// newline ?????? tab ?????? space ??????? dot ???????
-<string> ::= <char> | <char> <string>
-<boolean> ::= <true> | <false>
-// define <identifier>
+<return_stmt> ::= <return_keyword> <mixed_list> ;
 
 <code_block> ::= <empty> | { <stmt_list> }
 <for_loop> ::= for ( <assignment_stmt> ; <relational_expression> ; <arithmetic_expression> ) <code_block>
 <while_loop> ::= while ( <expression> ) <code_block>
 <function_declaration> ::= <function_keyword> <function_name> ( <function_params> ) <code_block>
+<function_name> ::= <identifier>
+<function_params> ::= <identifier_list>
+
+<type> ::= | <int> | <char> | <string> | <boolean> | <double> | <list>
+<absolute_value> ::= <digit> | <digit> <int>
+<int> ::= <sign> <absolute_value>
+<char> ::= ' <letter> ' | ' <digit> ' | ' <under_score> ' | ' <newline> ' | ' <tab> '
+           " <letter> " | " <digit> " | " <under_score> " | " <newline> " | " <tab> "
+// newline, tab, space, dot... if included in char then don't use char for identifier
+//otherwise add them in string
+
+<string> ::= <char> | <char> <string>
+<boolean> ::= <true> | <false>
+<double> ::= <int> . <absolute_value> | . <absolute_value>
+<constant_list> ::= <empty> | <type> | <type> , <type_list>
+<list> ::= [ <type_list> ]
+// define <identifier>
+<identifier_list> ::= <identifier> | <identifier> , <identifier_list>
+<mixed_list> ::= <type_list> | <identifier_list> | <mixed_list> <mixed_list>
+//a list consisting of constants and variables: 5, fd, "mpm"
 
 <assign_op> ::= =
 <function_keyword> ::= func
@@ -31,4 +43,10 @@
 <tab> ::= \t
 <space> ::= \s
 <newline> ::= \n
-<true> ::= True |
+<dot> ::= \.
+<question_mark> ::= \?
+<true> ::= True | 1
+<false> ::= False | 0
+<plus_sign> ::= +
+<minus_sign> ::= -
+<sign> ::= <plus_sign> | <minus_sign>
