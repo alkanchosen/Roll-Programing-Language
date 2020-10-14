@@ -29,19 +29,11 @@
 <relational_op> ::= && | || // add more
 <comparison_op> ::= == | != | >= | > | <= | <  // add more if i missed
 
-
-
     //  3-) Arithmetic expression definition includes precedence, associativity of the operators
     <arithmetic_expr> ::= <arithmetic_expr> + <term> | <arithmetic_expr> - <term> | <term>
     <term> ::= <term> * <factor> | <term> / <factor> | <factor>
     <factor> ::= <expr> ** <factor> | <fact>
     <fact> ::= ( <arithmetic_expr> ) | <constant>
-
-    // Relational expression definition
-    <relational_expr> ::= //ToDo
-
-    // Boolean expression definition
-    <boolean_expr> ::= //ToDo
 
 /* 5-) Loops */
 <for_loop> ::= for ( <assignment_stmt> ; <relational_expr> ; <arithmetic_expr> ) <stmt_block>
