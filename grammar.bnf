@@ -7,8 +7,8 @@
 <identifier> ::= <letter> | <letter> <char_list>
 
 /* 2-) Assignment Statement */
-<assignment_stmt> ::=  <identifier> <assign_op> <expr> 
-                     
+<assignment_stmt> ::=  <l_value> <assign_op> <expr>
+//  should we add book.page = 45? <l_value> define
 
 <constant> ::=  <int> | <char> | <string> | <boolean> | <double> | <list>
 <constant_list> ::= <constant_list> , <constant> | <constant> // define comma ToDo
@@ -17,24 +17,24 @@
          | <char_identifier> <letter> <char_identifier>
          | <char_identifier> <symbol> <char_identifier>
 <int> ::= <number> | <sign> <number>
-<string> ::= <char_list>
+<string> ::= <quote> <char_list> <quote>
 <boolean> ::= <true> | <false>
-<double> ::= <number> . <number> | <sign> <number> . <number>
-<list> ::= [ <constant_list> ] // define brackets ToDo 
+<double> ::= <number> . <number> | <sign> <number> . <number>  
+<list> ::= [ <constant_list> ] // define brackets ToDo   
 
 /* 3-) and 4-) Expressions */
 <expr> ::= <conditional_expr> 
 <conditional_expr> ::= <comp_expr> <relational_op> <comp_expr> | <comp_expr>
 <comp_expr> ::= <arithmetic_expr> <comparison_op> <arithmetic_expr> | <arithmetic_expr>
 
-<relational_op> ::= && | || // add more ToDo
+<relational_op> ::= && | || | & | | // add more ToDo
 <comparison_op> ::= == | != | >= | > | <= | <  // add more if i missed ToDo
 
     //  3-) Arithmetic expression definition includes precedence, associativity of the operators
     <arithmetic_expr> ::= <arithmetic_expr> + <term> | <arithmetic_expr> - <term> | <term>
     <term> ::= <term> * <factor> | <term> / <factor> | <factor>
-    <factor> ::= <expr> ** <factor> | <fact>
-    <fact> ::= ( <arithmetic_expr> ) | <constant>
+    <factor> ::= <expr> ** <factor> | <result>
+    <result> ::= <LP> <arithmetic_expr> <RP> | <constant>
 
 /* 5-) Loops */
 <for_loop> ::= for ( <assignment_stmt> ; <relational_expr> ; <arithmetic_expr> ) <stmt_block>
@@ -48,11 +48,13 @@
               | if ( <logic_expr> ) then <matched> else <unmatched>
 
 /* 7-) Statements for input/output */
-// ToDo
+<input_stmt> ::= <input_key> <LP> <expr> <RP>  
+<output_stmt> ::= <output_key> <LP> <expr> <RP>
 
 /* 8-) Function definition and function calls */
-<function_declaration> ::= <function_keyword> <function_name> ( <function_params> ) <stmt_block>
-<function_call> ::= <function_name> ( <function_params> )
+<function_declaration> ::= <function_keyword> <function_name> ( <function_params> ) <stmt_block>   // func sum(x, y)
+<function_call> ::= <function_name> ( <function_params> )  // sum(x, y)
+<return_stmt> ::= <return_key> <expr> // return_key define edilecek
 
 <function_keyword> ::= func
 <function_name> ::= <string>
@@ -62,12 +64,19 @@
 /* 9-) Comments */
 <comment> ::= <slash> <slash> <string>
 
+/* 10-) Primitive Functions */
+<primitive_function_key> ::= readAltitude | readTemperature | ...
+
 /* Miscellaneous */
 <not_op> ::= !
 <l_cur> ::= {
 <r_cur> ::= }
+<LP> ::= (
+<RP> ::= )
 <begin_key> ::= begin
 <end_key> ::= end
+<input_key> ::= rin
+<output_key> ::= rout
 <empty> ::=
 <assign_op> ::= =
 <char_list> ::= <char_list> <char> | <char>
@@ -77,8 +86,6 @@
 <symbol> ::= $ | ! | # | &
 <digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 <number> ::= <number> <digit> | <digit>
-<left_paranthesis> ::= (
-<right_paranthesis> ::= )
 <slash> ::= /
 <semicolumn> ::= ;
 <sign> ::= + | -
