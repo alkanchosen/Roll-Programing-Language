@@ -7,10 +7,10 @@
 <identifier> ::= <letter> | <letter> <char_list>
 
 /* 2-) Assignment Statement */
-<assignment_stmt> ::=  <identifier> <assign_op> <arithmetic_expr> ;
-                     | <identifier> <assign_op> <constant> ;
+<assignment_stmt> ::=  <identifier> <assign_op> <expr> 
+                     
 
-<constant> ::= | <int> | <char> | <string> | <boolean> | <double> | <list>
+<constant> ::=  <int> | <char> | <string> | <boolean> | <double> | <list>
 
 <char> ::= <char_identifier> <digit> <char_identifier>
          | <char_identifier> <letter> <char_identifier>
@@ -22,7 +22,10 @@
 <list> ::= // ToDo
 
 /* 3-) and 4-) Expressions */
-<expr> ::= <arithmetic_expr> | <relational_expr> | <boolean_expr> // their combination? logic_expr? ToDo
+<expr> ::= <arithmetic_expr> | <bool_expr> 
+<bool_expr> ::= <not-op> <comp_expr> | <comp_expr>
+
+
 
     //  3-) Arithmetic expression definition includes precedence, associativity of the operators
     <arithmetic_expr> ::= <arithmetic_expr> + <term> | <arithmetic_expr> - <term> | <term>
@@ -63,6 +66,7 @@
 <comment> ::= <slash> <slash> <string>
 
 /* Miscellaneous */
+<not_op> ::= !
 <l_cur> ::= {
 <r_cur> ::= }
 <begin_key> ::= begin
