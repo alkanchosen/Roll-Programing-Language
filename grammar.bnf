@@ -22,19 +22,20 @@
 <list> ::= // ToDo
 
 /* 3-) and 4-) Expressions */
-<expr> ::= <arithmetic_expr> | <bool_expr> 
-<bool_expr> ::= <not-op> <comp_expr> | <comp_expr>
-<comp_expr> ::= <arithmetic_expr> <relational_op> <arithmetic_expr> | 
-3 < 54 == "nklnl
+<expr> ::= <conditional_expr> 
+<conditional_expr> ::= <comp_expr> <relational_op> <comp_expr> | <comp_expr>
+<comp_expr> ::= <arithmetic_expr> <comparison_op> <arithmetic_expr> | <arithmetic_expr>
 
+<relational_op> ::= && | || // add more
+<comparison_op> ::= == | != | >= | > | <= | <  // add more if i missed
 
 
 
     //  3-) Arithmetic expression definition includes precedence, associativity of the operators
     <arithmetic_expr> ::= <arithmetic_expr> + <term> | <arithmetic_expr> - <term> | <term>
     <term> ::= <term> * <factor> | <term> / <factor> | <factor>
-    <factor> ::= <expr> ** <factor> | <arithmetic_expr>
-    <arithmetic_expr> ::= ( <arithmetic_expr> ) | <identifier>
+    <factor> ::= <expr> ** <factor> | <fact>
+    <fact> ::= ( <arithmetic_expr> ) | <constant>
 
     // Relational expression definition
     <relational_expr> ::= //ToDo
