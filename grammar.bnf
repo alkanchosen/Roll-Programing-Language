@@ -11,23 +11,24 @@
                      
 
 <constant> ::=  <int> | <char> | <string> | <boolean> | <double> | <list>
+<constant_list> ::= <constant_list> , <constant> | <constant> // define comma ToDo
 
 <char> ::= <char_identifier> <digit> <char_identifier>
          | <char_identifier> <letter> <char_identifier>
          | <char_identifier> <symbol> <char_identifier>
-<int> ::= <digit> | <sign> <digit> | <int> <digit>
+<int> ::= <number> | <sign> <number>
 <string> ::= <char_list>
 <boolean> ::= <true> | <false>
-<double> ::= // ToDo
-<list> ::= // ToDo
+<double> ::= <number> . <number> | <sign> <number> . <number>
+<list> ::= [ <constant_list> ] // define brackets ToDo 
 
 /* 3-) and 4-) Expressions */
 <expr> ::= <conditional_expr> 
 <conditional_expr> ::= <comp_expr> <relational_op> <comp_expr> | <comp_expr>
 <comp_expr> ::= <arithmetic_expr> <comparison_op> <arithmetic_expr> | <arithmetic_expr>
 
-<relational_op> ::= && | || // add more
-<comparison_op> ::= == | != | >= | > | <= | <  // add more if i missed
+<relational_op> ::= && | || // add more ToDo
+<comparison_op> ::= == | != | >= | > | <= | <  // add more if i missed ToDo
 
     //  3-) Arithmetic expression definition includes precedence, associativity of the operators
     <arithmetic_expr> ::= <arithmetic_expr> + <term> | <arithmetic_expr> - <term> | <term>
@@ -75,6 +76,7 @@
                A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z
 <symbol> ::= $ | ! | # | &
 <digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+<number> ::= <number> <digit> | <digit>
 <left_paranthesis> ::= (
 <right_paranthesis> ::= )
 <slash> ::= /
