@@ -1,10 +1,10 @@
-<program> ::= begin <stmt_list> end
-<stmt_list> ::= <empty> | <stmt>; | <stmt>; <stmt_list>
-<stmt> ::= <matched> | <unmatched>
-<stmt_block> ::= { <stmt_list> }
+<program> ::=  <stmt_list> 
+<stmt_list> ::= <stmt> <semi_col> | <stmt_list> <stmt> <semi_col>
+<stmt> ::= <matched> | <unmatched> | <empty>
+<stmt_block> ::= <l_cur> <stmt_list> <r_cur>
 
 /* 1-) Identifier */
-<identifier> ::= // ToDo
+<identifier> ::= <letter> | <letter> <char_list>
 
 /* 2-) Assignment Statement */
 <assignment_stmt> ::=  <identifier> <assign_op> <arithmetic_expr> ;
@@ -43,7 +43,7 @@
 /* 6-) Conditional statements */
 <matched> ::= if ( <logic_expr> ) then <matched> else <matched>
             | <for_loop> | <while_loop> | <function_declaration> | <function_call>
-            | <assignment_stmt>
+            | <assignment_stmt> | <return_stmt>
 <unmatched> ::= if ( <logic_expr> ) then <stmt_block>
               | if ( <logic_expr> ) then <matched> else <unmatched>
 
@@ -63,6 +63,10 @@
 <comment> ::= <slash> <slash> <string>
 
 /* Miscellaneous */
+<l_cur> ::= {
+<r_cur> ::= }
+<begin_key> ::= begin
+<end_key> ::= end
 <empty> ::=
 <assign_op> ::= =
 <char_list> ::= <char_list> <char> | <char>
