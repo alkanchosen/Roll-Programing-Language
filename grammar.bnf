@@ -11,7 +11,7 @@
 //  should we add book.page = 45? <l_value> define
 
 <constant> ::=  <int> | <char> | <string> | <boolean> | <double> | <list>
-<constant_list> ::= <constant_list> , <constant> | <constant> // define comma ToDo
+<constant_list> ::= <constant_list> <comma> <constant> | <constant> 
 
 <char> ::= <char_identifier> <digit> <char_identifier>
          | <char_identifier> <letter> <char_identifier>
@@ -20,43 +20,40 @@
 <string> ::= <quote> <char_list> <quote>
 <boolean> ::= <true> | <false>
 <double> ::= <number> . <number> | <sign> <number> . <number>  
-<list> ::= [ <constant_list> ] // define brackets ToDo   
+<list> ::= <l_sqr>  <constant_list> <r_sqr> // define brackets ToDo   
 
 /* 3-) and 4-) Expressions */
 <expr> ::= <conditional_expr> 
 <conditional_expr> ::= <comp_expr> <relational_op> <comp_expr> | <comp_expr>
 <comp_expr> ::= <arithmetic_expr> <comparison_op> <arithmetic_expr> | <arithmetic_expr>
 
-<relational_op> ::= && | || | & | | // add more ToDo
-<comparison_op> ::= == | != | >= | > | <= | <  // add more if i missed ToDo
 
-    //  3-) Arithmetic expression definition includes precedence, associativity of the operators
-    <arithmetic_expr> ::= <arithmetic_expr> + <term> | <arithmetic_expr> - <term> | <term>
-    <term> ::= <term> * <factor> | <term> / <factor> | <factor>
-    <factor> ::= <expr> ** <factor> | <result>
-    <result> ::= <LP> <arithmetic_expr> <RP> | <constant>
+//  3-) Arithmetic expression definition includes precedence, associativity of the operators
+<arithmetic_expr> ::= <arithmetic_expr> <add_op> <term> | <arithmetic_expr> <subs_op> <term> | <term>
+<term> ::= <term> <mult_op> <factor> | <term> <div_op> <factor> |  <<term> <mod_op> <factor>> |<factor>
+<factor> ::= <expr> <base_op> <factor> | <result>
+<result> ::= <l_p> <arithmetic_expr> <r_p> | <constant>
 
 /* 5-) Loops */
-<for_loop> ::= for ( <assignment_stmt> ; <relational_expr> ; <arithmetic_expr> ) <stmt_block>
-<while_loop> ::= while ( <expr> ) <stmt_block>
+<for_loop> ::= for <l_p> <assignment_stmt> ; <relational_expr> ; <arithmetic_expr> <r_p> <stmt_block>
+<while_loop> ::= while <l_p> <expr> <r_p> <stmt_block>
 
 /* 6-) Conditional statements */
-<matched> ::= if ( <logic_expr> ) then <matched> else <matched>
+<matched> ::= if <l_p> <logic_expr> <r_p> then <matched> else <matched>
             | <for_loop> | <while_loop> | <function_declaration> | <function_call>
             | <assignment_stmt> | <return_stmt>
-<unmatched> ::= if ( <logic_expr> ) then <stmt_block>
-              | if ( <logic_expr> ) then <matched> else <unmatched>
+<unmatched> ::= if <l_p> <logic_expr> <r_p> then <stmt_block>
+              | if <l_p> <logic_expr> <r_p> then <matched> else <unmatched>
 
 /* 7-) Statements for input/output */
-<input_stmt> ::= <input_key> <LP> <expr> <RP>  
-<output_stmt> ::= <output_key> <LP> <expr> <RP>
+<input_stmt> ::= <input_key> <l_p> <expr> <r_p>  
+<output_stmt> ::= <output_key> <l_p> <expr> <r_p>
 
 /* 8-) Function definition and function calls */
-<function_declaration> ::= <function_keyword> <function_name> ( <function_params> ) <stmt_block>   // func sum(x, y)
-<function_call> ::= <function_name> ( <function_params> )  // sum(x, y)
-<return_stmt> ::= <return_key> <expr> // return_key define edilecek
+<function_declaration> ::= <function_key> <function_name> <l_p> <function_params> <r_p> <stmt_block>   
+<function_call> ::= <function_name> <l_p> <function_params> <r_p>  
+<return_stmt> ::= <return_key> <expr> 
 
-<function_keyword> ::= func
 <function_name> ::= <string>
 <function_params> ::= <empty> | <function_param> | <function_params> , <function_param>
 <function_param> ::= <identifier>
@@ -68,16 +65,29 @@
 <primitive_function_key> ::= readAltitude | readTemperature | ...
 
 /* Miscellaneous */
+<comma> ::= ,
 <not_op> ::= !
 <l_cur> ::= {
 <r_cur> ::= }
-<LP> ::= (
-<RP> ::= )
+<l_p> ::= (
+<r_p> ::= )
+<l_sqr> ::= [
+<r_sqr> ::= ]
+<return_key> ::= return
+<function_key> ::= func
 <begin_key> ::= begin
 <end_key> ::= end
 <input_key> ::= rin
 <output_key> ::= rout
 <empty> ::=
+<add_op> ::= +
+<subs_op> ::= -
+<mult_op> ::= *
+<div_op> ::= /
+<mod_op> ::= %
+<base_op> ::= **
+<relational_op> ::= && | || | & | | 
+<comparison_op> ::= == | != | >= | > | <= | <  
 <assign_op> ::= =
 <char_list> ::= <char_list> <char> | <char>
 <char_identifier> ::= '
