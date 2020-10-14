@@ -42,7 +42,8 @@
 
 /* 6-) Conditional statements */
 <matched> ::= if ( <logic_expr> ) then <matched> else <matched>
-            | <stmt_block>
+            | <for_loop> | <while_loop> | <function_declaration> | <function_call>
+            | <assignment_stmt>
 <unmatched> ::= if ( <logic_expr> ) then <stmt_block>
               | if ( <logic_expr> ) then <matched> else <unmatched>
 
