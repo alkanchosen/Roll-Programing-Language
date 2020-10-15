@@ -73,7 +73,10 @@
 
 
 /* 10-) Primitive Functions */
-<primitive_function_key> ::= readAltitude | readTemperature | ...
+<primitive_function_key> ::= readInclination | readAltitude
+                            | readTemperature | readAcceleration
+                            | turnOnCamera | turnOffCamera
+                            | takePicture | readTimestamp
 
 /* Miscellaneous */
 <comma> ::= ,

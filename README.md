@@ -30,9 +30,9 @@ Project 1:
 
     •	primitive functions for:
 
-      o	reading the inclination of the drone
+      o	reading the inclination of the drone - inclination()
 
-      o	reading the altitude
+      o	reading the altitude - altitude()
 
       o	reading the temperature
 
