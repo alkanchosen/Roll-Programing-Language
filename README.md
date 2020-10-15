@@ -4,11 +4,32 @@ Drone:  inclination, altitude, temperature, acceleration
 
 Project 1:
 
-  Part A Language Design
+  1. REPORT (pdf):
 
-    Name of the language: ?
+    Name, ID and section
+    
+    Name: RollLang
 
-    BNF description:
+    BNF
+
+    One paragraph explanation for each language construct (i.e. nonterminals) detailing their intended usage and meaning, as well as all of the associated conventions. (Why we have it, how it works, all possible constructions)
+
+    Descriptions of how nontrivial tokens (comments, identifiers, literals, reserved words, etc) are defined in your language. For all of these, explain what your motivations    and constraints were and how they relate to various language criteria such as readability, writability, reliability, etc.
+
+    Evaluate your language in terms of
+
+      Readability
+
+      Writability
+
+      Reliability
+
+  2. lex file
+  
+  3. Example programs (pdf)
+  
+
+  BNF description:
 
     •	variable identifiers
 
@@ -45,9 +66,3 @@ Project 1:
       o	reading current timestamp from timer
      
       o connecting to the base computer through wi-fi
-
-  Part B - Lexical Analysis
-
-    Lex -  IF LP IDENTIFIER EQUAL_OP NUMBER RP LBRACE ...
-
-  Part C - Example Programs
