@@ -1,7 +1,37 @@
 /* project.l */
+%option main
+alphabetic [A-Za-z_$]
+alphanumeric ({alphabetic}|{digit})
+digit [0-9]
+sign [+-]
 %%
-[0-9] return (INTEGER);
-\n    return (NEWLINE);
-.     return (yytext[0]);
-%%
-int yywrap() {return 1;}
+if                            printf("IF");
+while                         printf("WHILE");
+for                           printf("FOR");
+return                        printf("RETURN");
+func                          printf("FUNC_KEY");
+rin                           printf("INPUT_KEY");
+rout                          printf("OUTPUT_KEY");
+true                          printf("TRUE");
+false                         printf("FALSE");
+{sign}?{digit}+               printf("INT");
+{sign}?{digit}*(\.){digit}+   printf("FLOAT");
+'{alphanumeric}'              printf("CHAR");
+{alphabetic}{alphanumeric}*   printf("IDENTIFIER");
+(\"){alphabetic}+(\")         printf("STRING");
+(==|!=|>=|>|<=|<)             printf("COMPARISON_OP");
+(&&|\|\||&|\|)                printf("RELATIONAL_OP");
+\/\/                          printf("COMMENT_IDENT");
+\*\*                          printf("FACTOR_OP");
+\+                            printf("ADD_OP");
+-                             printf("SUB_OP");
+\/                            printf("DIV_OP");
+\*                            printf("MULT_OP");
+\(                            printf("LP");
+\)                            printf("RP");
+;                             printf("SEMI_COLUMN");
+{                             printf("L_CB");
+}                             printf("R_CB");
+=                             printf("ASSIGN_OP");
+,                             printf("COMMA");
+
