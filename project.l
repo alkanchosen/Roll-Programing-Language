@@ -27,11 +27,14 @@ false                         printf("FALSE");
 -                             printf("SUB_OP");
 \/                            printf("DIV_OP");
 \*                            printf("MULT_OP");
+\%                            printf("MOD_OP");
 \(                            printf("LP");
 \)                            printf("RP");
 ;                             printf("SEMI_COLUMN");
 {                             printf("L_CB");
 }                             printf("R_CB");
+\[                            printf("L_SB");  
+\]                            printf("R_SB");
 =                             printf("ASSIGN_OP");
 ,                             printf("COMMA");
 
