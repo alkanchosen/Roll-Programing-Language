@@ -14,7 +14,7 @@
 <assignment_stmt> ::=  <identifier> <assign_op> <expr>
 
 <constant> ::=  <int> | <char> | <string> | <boolean> | <double> | <list>
-<constant_list> ::= <constant_list> <comma> <constant> | <constant>
+<constant_list> ::= <constant_list> <comma> <constant> | <constant> | <empty>
 <list> ::= <l_sqr>  <constant_list> <r_sqr>
 
 <boolean> ::= <true> | <false>
