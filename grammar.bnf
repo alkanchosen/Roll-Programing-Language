@@ -41,7 +41,7 @@
 
 
 /* 5-) Loops */
-<for_loop> ::= for <l_p> <assignment_stmt> ; <relational_expr> ; <arithmetic_expr> <r_p> <stmt_block>
+<for_loop> ::= for <l_p> <assignment_stmt> ; <conditional_expr> ; <assignment_stmt> <r_p> <stmt_block>
 <while_loop> ::= while <l_p> <expr> <r_p> <stmt_block>
 
 
