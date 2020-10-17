@@ -11,7 +11,7 @@
 
 
 /* 2-) Assignment Statement */
-<assignment_stmt> ::=  <l_value> <assign_op> <expr>
+<assignment_stmt> ::=  <identifier> <assign_op> <expr>
 
 <constant> ::=  <int> | <char> | <string> | <boolean> | <double> | <list>
 <constant_list> ::= <constant_list> <comma> <constant> | <constant>
