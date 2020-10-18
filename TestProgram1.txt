@@ -24,7 +24,7 @@ while ( x > 0 && y != 0 )
 	rout("x is: " + x); 
 }
 
-rin(z);
+z = rin();
 altitude = readAltitude();
 increaseBy10(altitude);
 rout(altitude);
