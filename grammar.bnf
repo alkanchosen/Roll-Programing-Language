@@ -61,7 +61,7 @@
 /* 8-) Function definition and function calls */
 <function_declaration> ::= <function_key> <function_name> <l_p> <function_params> <r_p> <stmt_block>   
 <function_call> ::= <function_name> <l_p> <expr_list> <r_p> | <primitive_function_key> <l_p> <expr_list> <r_p>
-<expr_list> ::= <expr_list> <expr> | <expr>
+<expr_list> ::= <expr_list> <comma> <expr> | <expr>
 <return_stmt> ::= <return_key> <expr> 
 
 <function_name> ::= <identifier>
