@@ -1,0 +1,30 @@
+x;
+y = 10;
+z = x + y ** 5 + x * 5;
+for ( i = 0; i < 5; i = i + 1 )
+{
+	if ( x >= 0 )
+	{
+	    x = x - 1;
+	}
+	if ( y < 0 )
+	{
+	    y = y + 0.65; // test comment
+	}
+}
+
+func increaseBy10(x)
+{
+	x = x + 10;
+	return x;
+}
+
+while ( x > 0 && y != 0 )
+{
+		rout("x is: " + x); 
+}
+
+z = rin();
+altitude = readAltitude();
+increaseBy10(altitude);
+rout(altitude);
