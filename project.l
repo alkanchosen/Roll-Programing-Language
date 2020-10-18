@@ -6,6 +6,7 @@ digit [0-9]
 sign [+-]
 %%
 if                            printf("IF ");
+else                          printf("ELSE ");
 while                         printf("WHILE ");
 for                           printf("FOR ");
 return                        printf("RETURN ");
