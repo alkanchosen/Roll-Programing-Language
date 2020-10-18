@@ -21,10 +21,10 @@ func increaseBy10(x)
 
 while ( x > 0 && y != 0 )
 {
-		rout("x is: " + x); 
+	rout("x is: " + x); 
 }
 
-z = rin();
+rin(z);
 altitude = readAltitude();
 increaseBy10(altitude);
 rout(altitude);
