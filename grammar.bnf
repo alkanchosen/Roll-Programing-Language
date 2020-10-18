@@ -46,7 +46,7 @@
 
 
 /* 6-) Conditional statements */
-<matched> ::= if <l_p> <logic_expr> <r_p> then <matched> else <matched>
+<matched> ::= if <l_p> <logic_expr> <r_p> then <l_cur> <matched> <r_cur> else <l_cur> <matched> <r_cur>
             | <for_loop> | <while_loop> | <function_declaration> | <function_call>
             | <assignment_stmt> | <return_stmt> | <input_stmt> | <output_stmt>
 <unmatched> ::= if <l_p> <logic_expr> <r_p> then <stmt_block>
