@@ -1,0 +1,24 @@
+
+idealAltitude = rin("Enter the altitude");
+idealTemperature =  rin("Enter the temperature");
+idealAcceleration =  rin("Enter the acceleration");
+
+
+altitude = readAltitude();
+temperature = readTemperature();
+acceleration = readAcceleration();
+
+
+func takeAPic(){
+        turnOnCamera();
+        takePicture();	
+        turnOffCamera();
+}
+
+
+if (  altitude == idealAltitude && temperature == idealTempreature && acceleration == idealAcceleration ){
+	takeAPic();	
+}
+else{
+	rout("photo could not be taken due to an error");
+}
