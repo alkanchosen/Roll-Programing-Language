@@ -14,6 +14,10 @@ rin                           printf("INPUT_KEY ");
 rout                          printf("OUTPUT_KEY ");
 true                          printf("TRUE ");
 false                         printf("FALSE ");
+(readInclination|readAltitude|
+readTemperature|readAcceleration|
+turnOnCamera|turnOffCamera|
+takePicture|readTimestamp)    printf("PRITIMITIVE_FUNCTION_KEY )";
 {sign}?{digit}+               printf("INT ");
 {sign}?{digit}*(\.){digit}+   printf("FLOAT ");
 '{alphanumeric}'              printf("CHAR ");
