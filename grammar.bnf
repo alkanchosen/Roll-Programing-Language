@@ -29,15 +29,19 @@
 
 /* 3-) and 4-) Expressions */
 <expr> ::= <conditional_expr> 
-<conditional_expr> ::= <comp_expr> <relational_op> <comp_expr> | <comp_expr>
+<conditional_expr> ::= <conditional_expr> <or_op> <conditional_expr> | <conditional_term>
+<conditional_term> ::= <conditional_term> <and_op> <conditional_factor> | <conditional_factor>
+<conditional_factor> ::= <conditional_factor> <not_op> <conditional_result> | <conditional_result>
+<conditional_result> ::= <l_p> <conditional_expr> <r_p> | <comp_expr>
 <comp_expr> ::= <arithmetic_expr> <comparison_op> <arithmetic_expr> | <arithmetic_expr>
 
 
 //  3-) Arithmetic expression definition includes precedence, associativity of the operators
-<arithmetic_expr> ::= <arithmetic_expr> <add_op> <term> | <arithmetic_expr> <subs_op> <term> | <term>
-<term> ::= <term> <mult_op> <factor> | <term> <div_op> <factor> | <term> <mod_op> <factor> | <factor>
-<factor> ::= <expr> <base_op> <factor> | <result>
-<result> ::= <l_p> <arithmetic_expr> <r_p> | <constant> | <identifier>
+<arithmetic_expr> ::= <arithmetic_expr> <add_op> <arithmetic_term> | <arithmetic_expr> <subs_op> <arithmetic_term> | <arithmetic_term>
+<arithmetic_term> ::= <arithmetic_term> <mult_op> <arithmetic_factor> | <arithmetic_term> <div_op> <arithmetic_factor> 
+                      | <arithmetic_term> <mod_op> <arithmetic_factor> | <arithmetic_factor>
+<arithmetic_factor> ::= <arithmetic_factor> <base_op> <arithmetic_result> | <arithmetic_result>
+<arithmetic_result> ::= <l_p> <arithmetic_expr> <r_p> | <constant> | <identifier>
 
 
 /* 5-) Loops */
