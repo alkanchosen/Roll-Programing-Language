@@ -46,4 +46,5 @@ readTimestamp                 printf("READ_TIMESTAMP ");
 \]                            printf("R_SB ");
 =                             printf("ASSIGN_OP ");
 ,                             printf("COMMA ");
+!                             printf("NOT_OP ");
 
