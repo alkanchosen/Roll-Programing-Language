@@ -29,7 +29,7 @@
 
 /* 3-) and 4-) Expressions */
 <expr> ::= <conditional_expr> 
-<conditional_expr> ::= <conditional_expr> <or_op> <conditional_expr> | <conditional_term>
+<conditional_expr> ::= <conditional_expr> <or_op> <conditional_term> | <conditional_term>
 <conditional_term> ::= <conditional_term> <and_op> <conditional_factor> | <conditional_factor>
 <conditional_factor> ::= <conditional_factor> <not_op> <conditional_result> | <conditional_result>
 <conditional_result> ::= <l_p> <conditional_expr> <r_p> | <comp_expr>
