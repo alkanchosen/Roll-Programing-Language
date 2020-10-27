@@ -33,7 +33,7 @@
 <conditional_term> ::= <conditional_term> <and_op> <conditional_factor> | <conditional_factor>
 <conditional_factor> ::= <conditional_factor> <not_op> <conditional_result> | <conditional_result>
 <conditional_result> ::= <l_p> <conditional_expr> <r_p> | <comp_expr>
-<comp_expr> ::= <arithmetic_expr> <comparison_op> <arithmetic_expr> | <arithmetic_expr>
+<comp_expr> ::= <comp_expr> <comparison_op> <arithmetic_expr> | <arithmetic_expr>
 
 
 //  3-) Arithmetic expression definition includes precedence, associativity of the operators
