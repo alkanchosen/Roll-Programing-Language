@@ -58,7 +58,7 @@
 
 
 /* 7-) Statements for input/output */
-<input_stmt> ::= <input_key> <l_p> <string> <r_p>  
+<input_stmt> ::= <input_key> <l_p> <r_p>  
 <output_stmt> ::= <output_key> <l_p> <expr> <r_p>
 
 
