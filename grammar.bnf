@@ -13,12 +13,12 @@
 /* 2-) Assignment Statement */
 <assignment_stmt> ::=  <identifier> <assign_op> <expr> | <identifier> <assign_op> <function_call>
 
-<constant> ::=  <int> | <char> | <string> | <boolean> | <double> 
+<constant> ::=  <int> | <char> | <string> | <boolean> | <float> 
 <constant_list> ::= <constant_list> <comma> <constant> | <constant> 
 
 
 <boolean> ::= <true> | <false>
-<double> ::= <number> . <number> | <sign> <number> . <number>
+<float> ::= <number> . <number> | <sign> <number> . <number>
 <int> ::= <number> | <sign> <number>
 
 <character> ::= <digit> | <letter> | <underscore> | <symbol>
