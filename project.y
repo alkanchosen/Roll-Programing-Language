@@ -19,7 +19,7 @@ assignment_stmt: IDENTIFIER ASSIGN_OP conditional_expr
 conditional_expr: conditional_expr OR_OP conditional_term | conditional_term
 conditional_term: conditional_term AND_OP conditional_factor | conditional_factor
 conditional_factor: conditional_factor NOT_OP conditional_result | conditional_result
-conditional_result: LP conditional_expr RP | comp_expr
+conditional_result: LP comp_expr RP | comp_expr
 
 comp_expr: comp_expr COMPARISON_OP arithmetic_expr | arithmetic_expr
 
