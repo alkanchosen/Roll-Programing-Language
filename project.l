@@ -5,6 +5,8 @@ alphanumeric ({alphabetic}|{digit})
 digit [0-9]
 sign [+-]
 %%
+begin                         return(BEGIN);
+end                           return(END);
 if                            return(IF);
 else                          return(ELSE);
 while                         return(WHILE);
