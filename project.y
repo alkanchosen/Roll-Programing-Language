@@ -5,16 +5,17 @@
 %token MOD_OP LP RP SEMI_COLON L_CB R_CB L_SB R_SB ASSIGN_OP COMMA NOT_OP CHARACTER
 %%
 program: START stmt_list END
-stmt_list: stmt SEMI_COLON | stmt_list stmt SEMI_COLON 
+line: COMMENT | stmt SEMI_COLON COMMENT
+stmt_list: line | stmt_list line
 stmt_block: L_CB stmt_list R_CB 
 stmt: matched | unmatched
 matched: IF LP conditional_expr RP L_CB matched R_CB ELSE L_CB matched R_CB
-         | for_loop | while_loop | function_declaration | function_call assignment_stmt | return_stmt | input_stmt | 
+         | for_loop | while_loop | function_declaration | function_call | assignment_stmt | return_stmt | input_stmt |
          | output_stmt
 unmatched: IF LP conditional_expr RP stmt_block
          | IF LP conditional_expr RP matched ELSE unmatched
 
-assignment_stmt: IDENTIFIER ASSIGN_OP conditional_expr | IDENTIFIER ASSIGN_OP function_call
+assignment_stmt: IDENTIFIER ASSIGN_OP conditional_expr
 
 conditional_expr: conditional_expr OR_OP conditional_term | conditional_term
 conditional_term: conditional_term AND_OP conditional_factor | conditional_factor
@@ -48,8 +49,6 @@ return_stmt: RETURN conditional_expr
 function_name: IDENTIFIER
 function_params: function_param | function_params COMMA function_param
 function_param: IDENTIFIER
-
-comment:  COMMENT
 
 primitive_function_key: READ_INCLINATION | READ_ALTITUDE | READ_TEMPERATURE | READ_ACCELERATION | TURN_ON_CAMERA
                         | TURN_OFF_CAMERA | TAKE_PICTURE | READ_TIMESTAMP
