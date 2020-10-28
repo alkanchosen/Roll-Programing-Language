@@ -27,6 +27,7 @@ readTimestamp                 return(READ_TIMESTAMP);
 {sign}?{digit}+               return(INT);
 {sign}?{digit}*(\.){digit}+   return(FLOAT);
 '{alphanumeric}'              return(CHAR);
+({alphanumeric}|_|$|#|&|\s|\n|\t|\")	return(CHARACTER);
 {alphabetic}{alphanumeric}*   return(IDENTIFIER);
 (\").+(\")                    return(STRING);
 (==|!=|>=|>|<=|<)             return(COMPARISON_OP);
