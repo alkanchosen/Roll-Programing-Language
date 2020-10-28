@@ -10,7 +10,7 @@ stmt_list: line | stmt_list line
 stmt_block: L_CB stmt_list R_CB 
 stmt: matched | unmatched
 matched: IF LP conditional_expr RP L_CB matched R_CB ELSE L_CB matched R_CB
-         | for_loop | while_loop | function_declaration | function_call | assignment_stmt | return_stmt | input_stmt | output_stmt |
+         | for_loop | while_loop | function_declaration | function_call | assignment_stmt | return_stmt | input_stmt | output_stmt
 unmatched: IF LP conditional_expr RP stmt_block
          | IF LP conditional_expr RP matched ELSE unmatched
 
