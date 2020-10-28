@@ -21,6 +21,7 @@ conditional_expr: conditional_expr OR_OP conditional_term | conditional_term
 conditional_term: conditional_term AND_OP conditional_factor | conditional_factor
 conditional_factor: conditional_factor NOT_OP conditional_result | conditional_result
 conditional_result: LP conditional_expr RP | comp_expr
+
 comp_expr: comp_expr COMPARISON_OP arithmetic_expr | arithmetic_expr
 
 arithmetic_expr: arithmetic_expr ADD_OP arithmetic_term | arithmetic_expr SUB_OP arithmetic_term | arithmetic_term
@@ -33,9 +34,7 @@ for_loop: FOR LP assignment_stmt SEMI_COLON conditional_expr SEMI_COLON assignme
 while_loop: WHILE LP conditional_expr RP stmt_block
 
 constant: INT | CHAR | STRING | boolean | FLOAT
-constant_list: constant_list COMMA constant | constant
 boolean: TRUE | FALSE
-char_list: char_list CHARACTER | CHARACTER
 
 input_stmt: INPUT_KEY LP RP
 output_stmt: OUTPUT_KEY LP conditional_expr RP
