@@ -19,6 +19,9 @@ func increaseBy10(x)
 	return x;
 }
 
+| for_loop | while_loop | function_declaration | function_call
+         | assignment_stmt | return_stmt | input_stmt | output_stmt
+
 while ( x > 0 && y != 0 )
 {
 	rout("x is: " + x); 

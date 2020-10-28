@@ -13,9 +13,15 @@ matched: IF LP conditional_expr RP L_CB matched R_CB ELSE L_CB matched R_CB
          | assignment_stmt | return_stmt | input_stmt | output_stmt
 unmatched: IF LP conditional_expr RP stmt_block
          | IF LP conditional_expr RP matched ELSE unmatched
-conditional_expr: INT COMPARISON_OP INT
-for_loop: FOR
-
+conditional_expr:
+for_loop: FOR LP assignment_stmt SEMI_COLON conditional_expr SEMI_COLON assignment_stmt RP stmt_block
+while_loop:
+function_declaration:
+function_call:
+assignment_stmt:
+return_stmt:
+input_stmt:
+output_stmt:
 %%
 #include "lex.yy.c"
 yyerror(char *s) { printf("%s\n", s); }
