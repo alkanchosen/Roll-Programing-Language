@@ -4,8 +4,8 @@
 %token COMPARISON_OP RELATIONAL_OP COMMENT FACTOR_OP ADD_OP SUB_OP DIV_OP MULT_OP
 %token MOD_OP LP RP SEMI_COLON L_CB R_CB L_SB R_SB ASSIGN_OP COMMA NOT_OP
 %%
-program: START stmt_list END ;
-stmt_list: stmt SEMI_COLON | stmt_list stmt SEMI_COLON ;
+program: START stmt_list END
+stmt_list: stmt SEMI_COLON | stmt_list stmt SEMI_COLON
 stmt: INT
 %%
 #include "lex.yy.c"

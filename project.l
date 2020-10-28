@@ -48,6 +48,6 @@ readTimestamp                 return(READ_TIMESTAMP);
 =                             return(ASSIGN_OP);
 ,                             return(COMMA);
 !                             return(NOT_OP);
-.                             return(yytext[0]);
+.                             ;
 %%
 int yywrap() { return 1; }
