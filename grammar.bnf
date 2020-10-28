@@ -1,4 +1,4 @@
-<program> ::=  <stmt_list> 
+<program> ::=  <begin> <stmt_list> <end>
 <stmt_list> ::= <stmt> <semi_col> | <stmt_list> <stmt> <semi_col>
 <stmt> ::= <matched> | <unmatched> | <empty>
 <stmt_block> ::= <l_cur> <stmt_list> <r_cur>
@@ -84,6 +84,8 @@
                             | takePicture | readTimestamp | connectToBase
 
 /* Miscellaneous */
+<begin> ::= begin
+<end> ::= end
 <comma> ::= ,
 <not_op> ::= !
 <l_cur> ::= {

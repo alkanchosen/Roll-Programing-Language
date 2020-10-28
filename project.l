@@ -4,7 +4,7 @@ alphanumeric ({alphabetic}|{digit})
 digit [0-9]
 sign [+-]
 %%
-begin                         return(BEGIN);
+start                         return(START);
 end                           return(END);
 if                            return(IF);
 else                          return(ELSE);
