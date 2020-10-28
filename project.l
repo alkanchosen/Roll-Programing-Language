@@ -1,5 +1,4 @@
 /* project.l */
-%option main
 alphabetic [A-Za-z_$]
 alphanumeric ({alphabetic}|{digit})
 digit [0-9]
