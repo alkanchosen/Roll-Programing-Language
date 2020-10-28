@@ -3,6 +3,7 @@ alphabetic [A-Za-z_$]
 alphanumeric ({alphabetic}|{digit})
 digit [0-9]
 sign [+-]
+newline \n
 %%
 start                         return(START);
 end                           return(END);
@@ -16,6 +17,7 @@ rin                           return(INPUT_KEY);
 rout                          return(OUTPUT_KEY);
 true                          return(TRUE);
 false                         return(FALSE);
+connectToBase                 return(CONNECT_TO_BASE);
 readInclination               return(READ_INCLINATION);
 readAltitude                  return(READ_ALTITUDE);
 readTemperature               return(READ_TEMPERATURE);
@@ -27,7 +29,6 @@ readTimestamp                 return(READ_TIMESTAMP);
 {sign}?{digit}+               return(INT);
 {sign}?{digit}*(\.){digit}+   return(FLOAT);
 '{alphanumeric}'              return(CHAR);
-({alphanumeric}|_|$|#|&|\s|\n|\t|\")	return(CHARACTER);
 {alphabetic}{alphanumeric}*   return(IDENTIFIER);
 (\").+(\")                    return(STRING);
 (==|!=|>=|>|<=|<)             return(COMPARISON_OP);
@@ -50,6 +51,6 @@ readTimestamp                 return(READ_TIMESTAMP);
 \]                            return(R_SB);
 =                             return(ASSIGN_OP);
 ,                             return(COMMA);
-.                             ;
+[ |\t|\n]+                    ;
 %%
 int yywrap() { return 1; }
