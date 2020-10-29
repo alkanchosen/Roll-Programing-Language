@@ -14,7 +14,7 @@ stmt_block: L_CB stmt_list R_CB
 stmt: matched | unmatched
 matched: IF LP conditional_expr RP L_CB matched R_CB ELSE L_CB matched R_CB
          | for_loop | while_loop | function_declaration | function_call | assignment_stmt | return_stmt | input_stmt |
-         | output_stmt
+         | output_stmt | comment
 unmatched: IF LP conditional_expr RP stmt_block
          | IF LP conditional_expr RP matched ELSE unmatched
 
@@ -47,6 +47,8 @@ function_call: function_name LP expr_list RP | function_name LP  RP | primitive_
 
 expr_list: expr_list COMMA conditional_expr | conditional_expr
 return_stmt: RETURN conditional_expr
+
+comment: COMMENT
 
 function_name: IDENTIFIER
 function_params: function_param | function_params COMMA function_param
