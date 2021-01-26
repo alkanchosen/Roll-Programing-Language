@@ -1,0 +1,55 @@
+
+start
+
+connectToBase();
+
+minAltitude = rin();
+maxAltitude = rin();
+minInclination = rin();
+maxInclination = rin();
+
+
+
+// for saving altitude to a remote file
+for( i = 0; i < maxAltitude; i = i + 1 ){
+  
+  rout("acclog.txt", i);    
+
+}
+
+
+// camera function for taking pictures 
+func camera(min_alt, max_alt, min_inc, max_inc){
+	while(readTemperature() <= 50) {
+		if (readAltitude() >= min_alt && readAltitude() <= max_alt 
+		&& readInclination() >= min_inc && readInclination() <= max_inc){
+			turnOnCamera();
+			if (readAcceleration() == 0){
+				takePicture();
+			}
+		}
+		else {
+			turnOffCamera();
+		}
+	}
+ 
+
+}
+
+camera(minAltitude, maxAltitude, minInclination, maxInclination);
+
+// a function declaration to log current temperature and the timestamp
+func saveTemp(textFileName ){
+        while (readTemperature() <= 90){
+          temp = readTemperature();
+          time = readTimestamp();
+          rout(textFileName, temp);
+          rout(textFileName, time);
+        }
+}
+
+textFileName = "templog.txt";
+
+saveTemp(textFileName);
+
+end

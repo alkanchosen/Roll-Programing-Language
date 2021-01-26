@@ -1,9 +1,9 @@
-/* project.l */
 alphabetic [A-Za-z_$]
 alphanumeric ({alphabetic}|{digit})
 digit [0-9]
 sign [+-]
 newline \n
+%option yylineno
 %%
 start                         return(START);
 end                           return(END);
