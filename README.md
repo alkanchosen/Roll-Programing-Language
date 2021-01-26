@@ -1,35 +1,20 @@
-# CS-315-22-Project - RollLang
+# Roll Programming Language
 
-Drone:  inclination, altitude, temperature, acceleration 
+### Project: A Programming Language for Drones, its Lexical Analyzer and parser
 
-Project 1:
-
-  1. REPORT (pdf):
-
-    Name, ID and section
-    
-    Name: RollLang
-
-    BNF
-
-    One paragraph explanation for each language construct (i.e. nonterminals) detailing their intended usage and meaning, as well as all of the associated conventions. (Why we have it, how it works, all possible constructions)
-
-    Descriptions of how nontrivial tokens (comments, identifiers, literals, reserved words, etc) are defined in your language. For all of these, explain what your motivations    and constraints were and how they relate to various language criteria such as readability, writability, reliability, etc.
-
-    Evaluate your language in terms of
-
-      Readability
-
-      Writability
-
-      Reliability
-
-  2. lex file
+  This project involves designing a programming language for drones, writing its lexical analyzer and building a parser for our design using the `yacc` tool.
   
-  3. Example programs (pdf)
-  
+  This repository contains these files:
 
-  BNF description:
+  1. **RollPL.lex:** This file contains the lexical analyzer for our programming language.
+  
+  2. **RollPL.yacc:** This yacc file is the parser of our programming language. If the input file has valid syntax, it prints a success message. Otherwise, it prints an error message indicating the line number of erroneous line.
+  
+  3. **RollPL.test:** This is an example program which is written in Roll programming language.
+  
+  4. **Makefile:** This Makefile produces a complete parser as an executable file and sends the test program to this executable.
+  
+  BNF description of the language:
 
     •	variable identifiers
 
